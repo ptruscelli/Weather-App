@@ -14,6 +14,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "date-fns": "^4.1.0",
     "vite": "^7.0.6"
   }
 }
