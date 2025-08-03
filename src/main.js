@@ -4,6 +4,13 @@ import { format } from "date-fns";
 import { enGB } from "date-fns/locale";
 
 
+const searchForm = document.querySelector("#search-form");
+const searchInput = document.querySelector("#search-input");
+const submitBtn = document.querySelector("#search-submit");
+
+
+
+
 async function callWeatherAPI(city) {
 
     const link = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/next7days?unitGroup=metric&elements=datetime%2CdatetimeEpoch%2Cname%2Caddress%2CresolvedAddress%2Ctempmax%2Ctempmin%2Ctemp%2Cfeelslike%2Chumidity%2Cprecip%2Cprecipprob%2Cpreciptype%2Cwindgust%2Cwindspeed%2Cwindspeedmean%2Cwinddir%2Ccloudcover%2Csunrise%2Csunset%2Cconditions%2Cdescription%2Cicon&include=days%2Ccurrent%2Chours&key=TRLMYRRSPTZTW27C69VKJ5E43&contentType=json`;
@@ -16,13 +23,10 @@ async function callWeatherAPI(city) {
         }
 
         const data = await response.json();
-        // console.log(data);
 
         const currentWeather = processCurrentConditions(data);
-        console.log(`Parsed current weather:`, currentWeather);
 
         const hourlyWeather = processHourlyConditions(data);
-        console.log("hourly weather:", hourlyWeather);
 
         const nextWeekWeather = processNextWeekConditions(data);
 
@@ -30,13 +34,10 @@ async function callWeatherAPI(city) {
         return { rawData: data, current: currentWeather, hourly: hourlyWeather, nextWeek: nextWeekWeather}; 
 
     } catch (error) {
-        console.log(error);
-    }
+        console.error("Error in API Data processing:", error);
+        throw error;
+    };
 };
-
-callWeatherAPI("london");
-
-
 
 function processCurrentConditions(data) {
 
@@ -134,4 +135,36 @@ function processHourlyConditions(data) {
     };
 
     return hourlyData;
+};
+
+
+
+searchForm.addEventListener("submit", async (event) => {
+    event.preventDefault(); // stop html default page refresh upon submitting
+    await submitHandler();
+});
+
+
+
+async function submitHandler() {
+
+    if (searchInput.value === "") return; // do nothing for empty search bar
+
+    submitBtn.disabled = true;
+
+    try {
+
+        const weatherData = await callWeatherAPI(searchInput.value);
+        console.log(weatherData.current);
+        console.log(weatherData.hourly);
+        console.log(weatherData.nextWeek);
+
+    } catch (error) {
+        console.error("Failed to fetch weather data: ", error);
+    } finally {
+        submitBtn.disabled = false;
+    }
+
+    searchInput.value = "";
+
 };
