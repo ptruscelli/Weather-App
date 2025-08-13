@@ -6,15 +6,90 @@
     <title>Weather App</title>
 </head>
 <body>
+
+    <section class="current section">
+
+        <form class="form" id="search-form" novalidate>
+            <input type="text" class="text-input" id="search-input" placeholder="Enter City Name">
+            <button type="submit" class="" id="search-submit">Search</button>
+        </form>
+
+        <h2 class="city-header"></h2>
+        <div class="current-icon"></div>
+        <div class="current-conditions"></div>
+        <div class="current-temp"><span></span>&deg;</div>
+        <div class="current-feelsLike">Feels like <span></span>&deg;</div>
+        <div class="current-rain">
+            <div class="rain-icon current-icon"></div>
+            <div>Chance of rain</div>
+            <div><span class="current-precipProb">0</span>&percnt;</div>
+        </div>
+        <div class="current-humid">
+            <div class="humid-icon current-icon"></div>
+            <div>Humidity</div>
+            <div><span></span>&percnt;</div>
+        </div>
+        <div class="current-wind">
+            <div class="winddir-icon current-icon"></div>
+            <div>Wind</div>
+            <div><span></span>km/h</div>
+        </div>
+        <div class="current-windgust">
+            <div class="windgust-icon current-icon"></div>
+            <div>Wind gusts</div>
+            <div><span></span>km/h</div>
+        </div>
+        <div class="current-sunrise">
+            <div class="current-sunrise current-icon"></div>
+            <div>Sunrise</div>
+            <div></div>
+        </div>
+        <div class="current-sunset">
+            <div class="current-sunset current-icon"></div>
+            <div>Sunset</div>
+            <div></div>
+        </div>
+
+    </section>
+
+    <section class="hourly section">
+
+        <h2>Next 24 Hours</h2>
+        <div class="hourly-scroll scroller snaps-inline">
+            <div class="scroll-item">
+                <div class="hourly-time hourly-item">11:00</div>
+                <div class="hourly-icon hourly-item"></div>
+                <div class="hourly-temp hourly-item"><span>20</span>&deg;</div>
+                <div class="hourly-rain hourly-item"><span>0</span>&percnt;</div>
+                <div class="hourly-humi hourly-item"><span>30</span>&percnt;</div>
+            </div>
+            <!-- <div class="scroll-item"></div>
+            <div class="scroll-item"></div>
+            <div class="scroll-item"></div>
+            <div class="scroll-item"></div>
+            <div class="scroll-item"></div> -->
+        </div>
+
+    </section>
+
+    <section class="daily section">
+
+        <h2>Next 7 Days</h2>
+        <div class="daily-scroll scroller snaps-inline">
+            <div class="scroll-item">
+                <div class="daily-day daily-item">SUN</div>
+                <div class="daily-date daily-item">10 AUG</div>
+                <div class="daily-icon daily-item"></div>
+                <div class="daily-temp daily-item"><span>min 12.7&deg;</span> 19.0&deg; <span>max 20.9&deg;</span></div>
+                <div class="daily-rain daily-item">0&percnt;</div>
+                <div class="daily-wind daily-item">40 km/h;</div>
+            </div>
+
+        </div>
+
+    </section>
     
-<div>
-
-    <form class="form" id="search-form" novalidate>
-        <input type="text" class="text-input" id="search-input" placeholder="Enter City Name">
-        <button type="submit" class="" id="search-submit">Search</button>
-    </form>
-
-</div>
+    
 
     <script type="module" src="./src/main.js"></script>
 </body>

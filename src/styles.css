@@ -1,0 +1,97 @@
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+}
+
+body {
+    display: grid;
+    grid-template-columns: minmax(500px, 1fr) 2fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "current hourly"
+    "current daily";
+    height: 100vh;
+}
+
+.section {
+    border: 1px solid black;
+}
+
+.current {
+    grid-area: current;
+}
+
+.hourly {
+    grid-area: hourly;
+    overflow-x: hidden;
+}
+
+.hourly-scroll {
+    border: 1px solid green;
+    display: grid;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+}
+
+.snaps-inline {
+    scroll-snap-type: inline mandatory;
+    /* scroll-padding-inline: var(--padding, 1rem); */
+}
+
+.snaps-inline > * {
+    scroll-snap-align: start;
+}
+
+.scroll-item {
+    border: 1px solid red;
+    width: 250px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+}
+
+.scroll-item > * {
+    border: 1px solid blue;
+}
+
+.daily {
+    grid-area: daily;
+    overflow-x: hidden;
+}
+
+.daily-scroll {
+    border: 1px solid green;
+    display: grid;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+}
+
+.daily-scroll > .scroll-item {
+    width: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(5, auto);
+    place-items: center;
+}
+
+.daily-day { 
+    grid-area: 1 / 1; 
+    justify-self: start;
+}
+
+.daily-date { 
+    grid-area: 2 / 1; 
+    justify-self: start;
+}
+
+.daily-icon { grid-area: 1 / 2 / 3 / 3; } 
+.daily-temp { grid-area: 3 / 1 / 4 / 3; }  
+.daily-rain { grid-area: 4 / 1 / 5 / 3; }   
+.daily-wind { grid-area: 5 / 1 / 6 / 3; }   
