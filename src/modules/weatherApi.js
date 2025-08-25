@@ -134,6 +134,7 @@ export const weatherAPI = (() => {
                         windDir: hour.winddir,
                         icon: hour.icon
                     });
+
                 };
 
                 if (hourlyData.length >= 24) break; // early exit out of loops once we have 24 hours of data
@@ -147,17 +148,17 @@ export const weatherAPI = (() => {
 
 
 
-    function getDateWithUTCOffset(tzOffset) {
-        const now = new Date(); // get current time
-        const currentOffset = -now.getTimezoneOffset() / 60; // current local tz offset in hours
+    // function getDateWithUTCOffset(tzOffset) {
+    //     const now = new Date(); // get current time
+    //     const currentOffset = -now.getTimezoneOffset() / 60; // current local tz offset in hours
 
-        const deltaOffset = tzOffset - currentOffset; // timezone difference
-        const deltaOffsetMilli = deltaOffset * 1000 * 3600; // tz difference in ms
+    //     const deltaOffset = tzOffset - currentOffset; // timezone difference
+    //     const deltaOffsetMilli = deltaOffset * 1000 * 3600; // tz difference in ms
 
-        const nowTimestamp = now.getTime(); // milliseconds since unix
+    //     const nowTimestamp = now.getTime(); // milliseconds since unix
         
-        return new Date(nowTimestamp + deltaOffsetMilli); // new date object with tz offset applied
-    };
+    //     return new Date(nowTimestamp + deltaOffsetMilli); // new date object with tz offset applied
+    // };
 
 
 
