@@ -46,5 +46,14 @@ async function submitHandler() {
     }
 
     searchInput.value = "";
+    hideIntroPage();
 
+};
+
+function hideIntroPage() {
+    const cover = document.querySelector(".cover");
+
+    searchForm.classList.remove("centered");
+    cover.style.opacity = '0';
+    cover.style.zIndex = '-1';
 };

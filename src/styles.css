@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 *, ::before, ::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: inherit;
+    font-family: "Poppins", sans-serif;
+    position: relative;
 }
 
 body {
@@ -14,31 +16,216 @@ body {
     "current hourly"
     "current daily";
     height: 100vh;
+    color: white;
+    background-color: #242424;
+    min-height: 700px;
+    min-width: 800px;
+}
+
+.cover {
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: #242424;
+    display: grid;
+    place-items: center;
+    min-width: 800px;
+    min-height: 700px;
+}
+
+.satellite-icon {
+    background-image: url(./icons/satellite-dish.svg);
+    width: 150px;
+    height: 150px;
 }
 
 .section {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+}
+
+.section > h2 {
+    margin-bottom: 0.5rem;
+    font-size: 22px;
+    font-weight: 600;
 }
 
 .current {
     grid-area: current;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.current > * {
+    /* border: 1px solid purple; */
+    width: 100%;
+}
+
+#search-form {
+    display: flex;
+    border-radius: 50px;
+    margin: 1em;
+    width: 95%;
+    background-color: rgb(57, 57, 57);
+    z-index: 2;
+    transition: all 0.5s ease-in-out;
+}
+
+.centered {
+    position: absolute;
+    left: calc(50vw - 50%);
+    top: calc(50vh - 175px);
+}
+
+#search-input {
+    font-size: 16px;
+    flex-grow: 1;
+    padding: 0.6em 1.2em;
+    border: 1px solid transparent;
+    background: transparent;
+    border-radius: inherit;
+    color: #fafafa;
+}
+
+#search-input:focus {
+    outline: none;
+}
+
+#search-submit {
+    border-radius: 50px;
+    padding: 0 1.5em;
+    margin: 3px;
+    border: 1px solid transparent;
+    background-color: #242424;
+    color: #d9d9d9;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.top-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding-top: 40px;
+}
+
+
+
+
+h2.city-header {
+    align-self: flex-start;
+    margin-left: 1em;
+    font-size: 22px;
+    font-weight: 600;
+    position: absolute;
+    top: 0.5em;
 }
 
 .current-svg > svg {
-    width: 250px;
+    width: 175px;
+    right: 8px;
+}
+
+
+.current-temp {
+    font-size: 65px;
+    font-weight: 600;
+    line-height: 0.9em;
+}
+
+.current-conditions {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+
+.weather-details {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow-y: scroll;
+    padding: 1rem;
+}
+
+.info-card {
+    /* border: 1px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.5em;
+    gap: 1.2em;
+}
+
+.info-container > div:nth-child(1) {
+    font-size: 0.9rem;
+}
+
+.info-container > div:nth-child(2) {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.current-icon {
+    width: 22px;
+}
+
+.rain-icon > svg {
+    color: rgb(128, 146, 199);
+}
+
+.humid-icon > svg {
+    color: rgb(101, 127, 206);
+}
+
+.windgust-icon > svg {
+    color: rgb(108, 231, 125);
+}
+
+.sunrise-icon > svg {
+    color: rgb(255, 189, 36);
+}
+
+.sunset-icon > svg {
+    color: rgb(110, 67, 251);
 }
 
 .hourly {
     grid-area: hourly;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
 
 .hourly-scroll {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     display: grid;
     grid-auto-flow: column;
-    overflow-x: auto;
     overscroll-behavior-inline: contain;
+    gap: 2em;
+
+}
+
+.hourly-scroll > .scroll-item {
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 1.4rem;
+}
+
+.hourly-item {
+    /* border: 1px solid black; */
+}
+
+.hourly-time {
+    font-size: 1.3rem;
 }
 
 .hourly-icon {
@@ -51,6 +238,35 @@ body {
 .hourly-icon > img {
     width: 100px;
     height: auto;
+    right: 2%;
+}
+
+.hourly-temp {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.hourly-rain {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.blue {
+    color: rgb(136, 165, 255);
+}
+
+.grey {
+    color: rgb(150, 150, 150);
+}
+
+.hourly-rain > svg {
+    width: 22px;
+    margin-right: 14px;
+    left: 10%;
+
 }
 
 .snaps-inline {
@@ -63,22 +279,46 @@ body {
 }
 
 .scroll-item {
-    border: 1px solid red;
     width: 250px;
-    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 24px;
+    border-radius: 12px;
+    background-color: rgb(57, 57, 57);
 }
 
 .scroll-item > * {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 .daily {
     grid-area: daily;
     overflow-x: hidden;
+}
+
+.daily-scroll {
+    /* border: 1px solid green; */
+    display: grid;
+    grid-auto-flow: column;
+    gap: 2em;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+}
+
+.daily-scroll > .scroll-item {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem;
+}
+
+.daily-item {
+    /* border: 1px solid blue; */
+}
+
+.daily-day, .daily-date {
+    font-size: 1.3rem;
 }
 
 .daily-icon {
@@ -89,37 +329,43 @@ body {
 }
 
 .daily-icon > img {
-    width: 100px;
+    width: 120px;
     height: auto;
 }
 
-.daily-scroll {
-    border: 1px solid green;
-    display: grid;
-    grid-auto-flow: column;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-}
-
-.daily-scroll > .scroll-item {
-    width: 300px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(5, auto);
-    place-items: center;
-}
 
 .daily-day { 
-    grid-area: 1 / 1; 
-    justify-self: start;
+    font-weight: 500;
 }
 
 .daily-date { 
     grid-area: 2 / 1; 
-    justify-self: start;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    color: rgb(176, 176, 176);
 }
 
-.daily-icon { grid-area: 1 / 2 / 3 / 3; } 
-.daily-temp { grid-area: 3 / 1 / 4 / 3; }  
-.daily-rain { grid-area: 4 / 1 / 5 / 3; }   
-.daily-wind { grid-area: 5 / 1 / 6 / 3; }   
+.daily-icon { 
+
+} 
+
+.daily-temp { 
+    font-size: 1.6rem;
+    font-weight: 500;
+}  
+
+.daily-minmax {
+    font-size: 1.2rem;
+    color: rgb(176, 176, 176);
+}
+
+.scroller {
+    overflow-x: scroll;
+    padding-bottom: 15px; /* Add padding to always show scrollbar */
+    margin-bottom: -15px;
+    place-items: center;
+
+}
+
+
+

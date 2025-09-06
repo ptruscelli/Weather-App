@@ -89,7 +89,7 @@ export const weatherAPI = (() => {
             // weekDay: format((day.datetimeEpoch * 1000), 'EEE'), // *1000 to convert from unix epoch seconds to js milliseconds
             weekDay: format(toZonedTime(new Date(day.datetimeEpoch * 1000), data.timezone), 'EEE'), 
             // dayDate: format((day.datetimeEpoch * 1000), 'd MMM'),
-            dayDate: format(toZonedTime(new Date(day.datetimeEpoch * 1000), data.timezone), 'd MMM'),
+            dayDate: format(toZonedTime(new Date(day.datetimeEpoch * 1000), data.timezone), 'dd MMM'),
             temp: day.temp,
             high: day.tempmax,
             low: day.tempmin,
@@ -126,7 +126,7 @@ export const weatherAPI = (() => {
 
                     hourlyData.push({
                         APITime: hour.datetimeEpoch,
-                        dateTime: format(toZonedTime(new Date(hour.datetimeEpoch * 1000), data.timezone), 'EEE HH:mm'),
+                        dateTime: format(toZonedTime(new Date(hour.datetimeEpoch * 1000), data.timezone), 'HH:mm'),
                         temp: hour.temp,
                         feelsLike: hour.feelslike,
                         humidity: hour.humidity,
